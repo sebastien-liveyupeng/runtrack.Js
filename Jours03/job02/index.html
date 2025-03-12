@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jours03/job02</title>
+    <script src="script.js" defer></script>
+    <style>
+        #container {
+            display: flex;
+            width: 600px;
+            margin: auto;
+        }
+        .piece {
+            width: 100px;
+            height: 100px;
+            cursor: grab;
+        }
+        .dragging {
+            opacity: 0.5;
+        }
+        #message {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button id="shuffleButton">Mélanger</button>
+    <div id="container">
+        <img src="img/1.png" class="piece" draggable="true" data-id="1">
+        <img src="img/2.png" class="piece" draggable="true" data-id="2">
+        <img src="img/3.png" class="piece" draggable="true" data-id="3">
+        <img src="img/4.png" class="piece" draggable="true" data-id="4">
+        <img src="img/5.png" class="piece" draggable="true" data-id="5">
+        <img src="img/6.png" class="piece" draggable="true" data-id="6">
+        
+    </div>
+    <p id="message"></p>
+</body>
+</html>
