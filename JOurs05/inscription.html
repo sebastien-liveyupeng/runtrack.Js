@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        h2 {
+            color: #065f06;
+            margin-top: 20px;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 700px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px #ccc;
+            margin: auto;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+        .form-group {
+            width: 100%;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 3px;
+        }
+        button {
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 15px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background: darkgreen;
+        }
+    </style>
+</head>
+<body>
+<header>
+
+    <ul>
+        <h1>jours05/Job01</h1>
+        <a href="../JOurs05/connexion.html">Connexion</a>
+      
+    </ul>
+
+
+
+
+</header>
+    <h2>Jour 05 - Inscription</h2>
+    <p class="error-message" id="global-error"></p>
+
+    <div class="container">
+        <form id="signup-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" name="prenom">
+                    <div class="error" id="error-prenom"></div>
+                </div>
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" name="nom">
+                    <div class="error" id="error-nom"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+                <div class="error" id="error-email"></div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password">
+                    <div class="error" id="error-password"></div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirmation du mot de passe</label>
+                    <input type="password" id="confirm-password" name="confirm-password">
+                    <div class="error" id="error-confirm-password"></div>
+                </div>
+            </div>
+
+            <button type="submit">S'inscrire</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("signup-form");
+
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault(); // 
+
+                let prenom = document.getElementById("prenom").value.trim();
+                let nom = document.getElementById("nom").value.trim();
+                let email = document.getElementById("email").value.trim();
+                let password = document.getElementById("password").value.trim();
+                let confirmPassword = document.getElementById("confirm-password").value.trim();
+
+                let errors = {};
+                let globalError = "";
+
+                if (prenom.length < 2) {
+                    errors.prenom = "La taille de votre prénom est trop petite.";
+                }
+                if (nom.length < 2) {
+                    errors.nom = "La taille de votre nom est trop petite.";
+                }
+                if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    errors.email = "Format d'email invalide.";
+                }
+                if (!password.match(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)) {
+                    errors.password = "Minimum 8 caractères, une lettre, un chiffre et un caractère spécial.";
+                }
+                if (password !== confirmPassword) {
+                    errors.confirmPassword = "Les mots de passe ne correspondent pas.";
+                }
+
+                if (Object.keys(errors).length > 0) {
+                    globalError = "Veuillez corriger les erreurs ci-dessous.";
+                }
+
+                document.getElementById("global-error").textContent = globalError;
+                document.querySelectorAll(".error").forEach(e => e.textContent = "");
+                for (let key in errors) {
+                    document.getElementById(`error-${key}`).textContent = errors[key];
+                }
+
+                if (Object.keys(errors).length === 0) {
+                    let response = await fetch("verif.php", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                        body: `prenom=${prenom}&nom=${nom}&email=${email}&password=${password}`
+                    });
+
+                    let result = await response.json();
+                    if (result.success) {
+                        alert("Inscription réussie !");
+                    } else {
+                        alert("Erreur : " + result.error);
+                    }
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

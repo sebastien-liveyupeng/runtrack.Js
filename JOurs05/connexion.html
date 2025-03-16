@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        h2 {
+            color: #065f06;
+            margin-top: 20px;
+        }
+        .error-message {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .form-container {
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px #ccc;
+            margin: auto;
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 3px;
+        }
+        button {
+            background: green;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <a href="../JOurs05/inscription.html">retour</a>
+    <h2>Connexion</h2>
+    <p class="error-message" id="global-error"></p>
+
+    <div class="form-container">
+        <form id="login-form">
+            <div class="form-group">
+                <label for="id-email">Email</label>
+                <input type="email" id="id-email" placeholder="ex: jean@gmail.com" required>
+                <div class="error" id="error-email"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="id-password">Mot de passe</label>
+                <input type="password" id="id-password" required>
+                <div class="error" id="error-password"></div>
+            </div>
+
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("login-form");
+
+            async function validateField(input, errorElement, validationFn) {
+                const errorMessage = await validationFn(input.value.trim());
+                errorElement.textContent = errorMessage;
+                return !errorMessage;
+            }
+
+            async function validateEmail(email) {
+                if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    return "Format d'email invalide.";
+                }
+                return "";
+            }
+
+            async function validatePassword(password) {
+                if (password.length < 8) {
+                    return "Le mot de passe doit contenir au moins 8 caractères.";
+                }
+                return "";
+            }
+
+            document.getElementById("id-email").addEventListener("input", async (e) => {
+                await validateField(e.target, document.getElementById("error-email"), validateEmail);
+            });
+
+            document.getElementById("id-password").addEventListener("input", async (e) => {
+                await validateField(e.target, document.getElementById("error-password"), validatePassword);
+            });
+
+            form.addEventListener("submit", async (event) => {
+                event.preventDefault();
+
+                let emailValid = await validateField(document.getElementById("id-email"), document.getElementById("error-email"), validateEmail);
+                let passwordValid = await validateField(document.getElementById("id-password"), document.getElementById("error-password"), validatePassword);
+
+                if (emailValid && passwordValid) {
+                    alert("Connexion réussie !");
+                } else {
+                    document.getElementById("global-error").textContent = "Veuillez corriger les erreurs ci-dessus.";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
