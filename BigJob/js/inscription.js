@@ -7,25 +7,34 @@ document.addEventListener("DOMContentLoaded", function () {
         let prenom = document.getElementById("firstname").value.trim();
         let password = document.getElementById("password").value.trim();
 
-        console.log("Valeurs récupérées :", { email, nom, prenom, password });
-
         if (!email.endsWith("@laplateforme.io")) {
             alert("Seuls les membres de La Plateforme_ peuvent s'inscrire.");
             return;
         }
 
-        let newUser = { email, nom, prenom, password, role: "utilisateur" };
+        let newUser = { email, nom, prenom, password, role: "utilisateur", rdv: [] };
 
-        let users = JSON.parse(localStorage.getItem("users")) || [];
-        console.log("Avant ajout :", users);
+        fetch("users.json")
+            .then(response => response.json())
+            .then(data => {
+                let users = data.users;
 
-       
-        users.push(newUser);
-        localStorage.setItem("users", JSON.stringify(users));
+                if (users.some(user => user.email === email)) {
+                    alert("Un compte avec cet email existe déjà !");
+                    return;
+                }
 
-        console.log("Après ajout :", JSON.parse(localStorage.getItem("users"))); // Vérification après stockage
-
-        alert("Inscription réussie !");
-        window.location.href = "rdv.html";
+                users.push(newUser);
+                return fetch("users.json", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ users })
+                });
+            })
+            .then(() => {
+                alert("Inscription réussie !");
+                window.location.href = "rdv.html";
+            })
+            .catch(error => console.error("Erreur :", error));
     });
 });

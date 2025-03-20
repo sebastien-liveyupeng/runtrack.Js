@@ -1,0 +1,64 @@
+{
+  "users": [
+    {
+      "email": "sebastien.live-yu-peng@laplateforme.io",
+      "nom": "Live yu peng",
+      "prenom": "Sebastien",
+      "password": "1234",
+      "role": "admin",
+      "rdv": [
+        {
+          "id": 1,
+          "date": "2025-03-25",
+          "heure": "10:00",
+          "status": "accepté"
+        }
+      ]
+    },
+    {
+      "email": "test@laplateforme.io",
+      "nom": "Test",
+      "prenom": "Test",
+      "password": "1234",
+      "role": "modérateur",
+      "rdv": [
+        {
+          "id": 2,
+          "date": "2025-04-01",
+          "heure": "09:00",
+          "status": "accepté"
+        }
+      ]
+    },
+    {
+      "email": "baba@laplateforme.io",
+      "nom": "Test",
+      "prenom": "Test",
+      "password": "1234",
+      "role": "utilisateur",
+      "rdv": [
+        {
+          "id": 2,
+          "date": "2025-04-01",
+          "heure": "09:00",
+          "status": "accepté"
+        },
+        {
+          "id": 1742482452325,
+          "date": "2025-03-30",
+          "statut": "Accepté"
+        },
+        {
+          "id": 1742482532868,
+          "date": "2025-03-30",
+          "statut": "Refusé"
+        },
+        {
+          "id": 1742483077153,
+          "date": "2025-07-26",
+          "statut": "En attente"
+        }
+      ]
+    }
+  ]
+}

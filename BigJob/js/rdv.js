@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
+    let currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+
+    if (!currentUser) {
+        alert("Vous devez être connecté pour voir et prendre des RDV.");
+        window.location.href = "index.html";
+        return;
+    }
+
+   
+    let users = JSON.parse(localStorage.getItem("usersData")) || [];
+    let user = users.find(u => u.email === currentUser.email);
+
+    if (!user) {
+        
+        user = { email: currentUser.email, rdv: [] };
+        users.push(user);
+    }
+
+   
     document.getElementById("validerPresence").addEventListener("click", function () {
         let date = document.getElementById("datePresence").value;
         let today = new Date().toISOString().split("T")[0];
@@ -8,47 +27,23 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        let demandes = JSON.parse(localStorage.getItem("demandes")) || [];
-        let currentUser = JSON.parse(localStorage.getItem("currentUser"));
+       
+        user.rdv.push({ id: Date.now(), date: date, statut: "En attente" });
 
-        if (!currentUser) {
-            alert("Vous devez être connecté pour faire une demande.");
-            return;
-        }
-
-        let nouvelleDemande = {
-            utilisateur: currentUser.email,
-            nom: currentUser.nom,
-            prenom: currentUser.prenom,
-            date: date,
-            statut: "En attente"
-        };
-
-        demandes.push(nouvelleDemande);
-        localStorage.setItem("demandes", JSON.stringify(demandes));
+        // localStorage
+        localStorage.setItem("usersData", JSON.stringify(users));
 
         alert("Demande envoyée !");
         location.reload();
     });
-});
-document.addEventListener("DOMContentLoaded", function () {
-    let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-    if (!currentUser) {
-        alert("Vous devez être connecté pour voir vos demandes.");
-        window.location.href = "index.html";
-        return;
-    }
-
-    let demandes = JSON.parse(localStorage.getItem("demandes")) || [];
+    
     let table = document.getElementById("tableDemandesUser");
+    table.innerHTML = "";
 
-    demandes.forEach(demande => {
-        if (demande.utilisateur === currentUser.email) {
-            let row = table.insertRow();
-            row.insertCell(0).textContent = demande.date;
-            row.insertCell(1).textContent = demande.statut;
-        }
+    user.rdv.forEach(rdv => {
+        let row = table.insertRow();
+        row.insertCell(0).textContent = rdv.date;
+        row.insertCell(1).textContent = rdv.statut;
     });
 });
-
