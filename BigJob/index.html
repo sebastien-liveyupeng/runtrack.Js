@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Présence - La Plateforme_</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="js/inscription.js"></script>
+<script src="js/connexion.js"></script>
+
+
+
+</head>
+<body class=".bg-secondary-subtle">
+
+    <nav class="navbar navbar-expand-lg navbar-dark .bg-secondary-subtle ">
+        <div class="container shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+            <a class="navbar-brand text-dark" href="index.html"><i class="bi bi-house-door"></i> La Plateforme_</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-dark" id="navbarNav">
+                <ul class="navbar-nav ms-auto ">
+                    <li class="nav-item "><a class="nav-link text-dark" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-box-arrow-in-right"></i> Connexion</a></li>
+                    <li class="nav-item "><a class="nav-link text-dark" href="#" data-bs-toggle="modal" data-bs-target="#inscriptionModal"><i class="bi bi-box-arrow-in-right"></i> Inscription</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+   
+    <header class="bg-primary text-white text-center py-5">
+        <h1><i class="bi bi-calendar-check"></i> Bienvenue à LaPlateforme_ .</h1>
+        <p>Ici vous pouvez organiser vos rendez-vous à La Plateforme_ .</p>
+    </header>
+    
+    <div class="container my-5">
+        <div class="row justify-content-start">
+            <div class="col-md-6">
+                <div class="card bg-light text-dark p-4">
+                    <h3 class="text-center shadow-sm p-3 mb-5 bg-body-tertiary rounded"><i class="bi bi-box-arrow-in-right "></i> Connexion</h3>
+                    <p class="text-center">Espace personnel</p>
+                    <div class="text-center">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-box-arrow-in-right"></i> Connexion</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-light text-dark p-4">
+                    <h3 class="text-center shadow-sm p-3 mb-5 bg-body-tertiary rounded"><i class="bi bi-pencil-square"></i> Inscription</h3>
+                    <p class="text-center">Si vous n'êtes pas encore inscrit, veuillez vous inscrire d'abord.</p>
+                    <div class="text-center">
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#inscriptionModal"><i class="bi bi-box-arrow-in-right"></i> Inscription</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-light text-dark p-4">
+                    <h3 class="text-center shadow-sm p-3 mb-5 bg-body-tertiary rounded"><i class="bi bi-pencil-square"></i> Gestion admin</h3>
+                    <p class="text-center">Seul les admins peuvent y'accéder</p>
+                    <div class="text-center">
+                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#loginModal"><i class="bi bi-box-arrow-in-right"></i>Connexion</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   <!---------------------------------Modal poir la connexion-->
+   <div class="modal fade" id="inscriptionModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Inscription</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="inscriptionForm">
+                    <input type="email" id="email" placeholder="Votre email" class="form-control mb-2">
+                    <input type="text" id="name" placeholder="Nom" class="form-control mb-2">
+                    <input type="text" id="firstname" placeholder="Prénom" class="form-control mb-2">
+                    <input type="password" id="password" placeholder="Mot de passe" class="form-control mb-2">
+                    <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="loginModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Connexion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="loginForm">
+                    <input type="email" id="emailLogin" placeholder="Email" class="form-control mb-2">
+                    <input type="password" id="passwordLogin" placeholder="Mot de passe" class="form-control mb-2">
+                    <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ 
+</body>
+</html>

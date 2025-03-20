@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscription</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</head>
+<body class="bg-white-900 text-white">
+
+    <!--Header-->
+    <header class="bg-blue-800 p-4">
+        <nav class="container mx-auto flex justify-end">
+            <ul class="flex space-x-4">
+                <li><a href="" class="">Accueil</a></li>
+                <li><a href="" class="">Inscription</a></li>
+                <li><a href="" class="">Connexion</a></li>
+                <li><a href="" class="">Rechercher</a></li>
+            </ul>
+        </nav>
+    </header>
+<!--Header-->
+    <!-- Formulaire -->
+    <section class="container mx-auto my-10 p-6 bg-blue-400 rounded-lg shadow-lg max-w-lg">
+        <h2 class="text-2xl italic text-center mb-6">Inscription</h2>
+        <form action="#" method="post" class="space-y-4">
+            
+            <!-- Civilité -->
+            <fieldset class="mb-4">
+                <legend class="font-semibold">Civilité</legend>
+                <div class="flex space-x-4">
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="civilite" value="monsieur" required class="text-blue-500">
+                        <span class="ml-2">Monsieur</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="radio" name="civilite" value="madame" required class="text-blue-500">
+                        <span class="ml-2">Madame</span>
+                    </label>
+                </div>
+            </fieldset>
+
+            <!---------------------------------->
+            <div>
+                <label for="prenom" class="block font-medium">Prénom :</label>
+                <input type="text" id="prenom" name="prenom" required class="w-full p-2 rounded bg-white-700 text-black focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+            
+            <div>
+                <label for="nom" class="block font-medium">Nom :</label>
+                <input type="text" id="nom" name="nom" required class="w-full p-2 rounded bg-white-700 text-black focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <div>
+                <label for="adresse" class="block font-medium"><box-icon name='home-alt'></box-icon>Adresse :</label>
+                <input type="text" id="adresse" name="adresse" required class="w-full p-2 rounded bg-white-700 text-black focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <div>
+                <label for="email" class="block font-medium"><box-icon name='envelope' ></box-icon>Email :</label>
+                <input type="email" id="email" name="email" required class="w-full p-2 rounded bg-white-700 text-black focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <div>
+                <label for="password" class="block font-medium"><box-icon name='lock-alt' ></box-icon>Mot de passe :</label>
+                <input type="password" id="password" name="password" required class="w-full p-2 rounded bg-white-700 text-black focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+
+            <div>
+                <label for="confirm_password" class="block font-medium"><box-icon name='lock-alt' ></box-icon>Confirmez le mot de passe :</label>
+                <input type="password" id="confirm_password" name="confirm_password" required class="w-full p-2 rounded bg-white-700 text-black focus:outline-none focus:ring-2 focus:ring-blue-400">
+            </div>
+   <!---------------------------------->
+            <!-- passion-->
+            <fieldset>
+                <legend class="font-semibold">Passions</legend>
+                <div class="grid grid-cols-2 gap-2">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="passions" value="informatique" class="text-blue-500">
+                        <span class="ml-2">Informatique</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="passions" value="voyages" class="text-blue-500">
+                        <span class="ml-2">Voyages</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="passions" value="sport" class="text-blue-500">
+                        <span class="ml-2">Sport</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="passions" value="lecture" class="text-blue-500">
+                        <span class="ml-2">Lecture</span>
+                    </label>
+                </div>
+            </fieldset>
+  <!-- passion-->
+            <!-- Bouton  -->
+            <button type="submit" class="w-full bg-blue-900 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition">
+                S'inscrire
+            </button>
+               <!-- Bouton  -->
+        </form>
+    </section>
+
+      <!-- Formulaire d'inscription -->
+  
+    <!-- Footer -->
+    <footer class="bg-blue-800 p-4 mt-10">
+        <nav class="container mx-auto text-center">
+            <ul class="flex justify-center space-x-12">
+                <li><a href="" class="">Accueil</a></li>
+                <li><a href="" class="">Inscription</a></li>
+                <li><a href="" class="">Connexion</a></li>
+                <li><a href="" class="">Rechercher</a></li>
+            </ul>
+        </nav>
+    </footer>
+   <!-- Footer -->
+</body>
+</html>
