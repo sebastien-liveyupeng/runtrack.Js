@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         user.rdv.forEach((rdv, index) => {
             let row = table.insertRow();
-            row.insertCell(0).textContent = user.nom + " " + user.prenom;
+            row.insertCell(0).textContent =   user.prenom;
             row.insertCell(1).textContent = user.email;
             row.insertCell(2).textContent = rdv.date;
             row.insertCell(3).textContent = rdv.statut;

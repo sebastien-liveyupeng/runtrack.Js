@@ -7,55 +7,61 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
-<body class="bg-light">
+<body class="bg-dark text-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark .bg-secondary-subtle ">
-        <div class="container shadow-sm p-3 mb-5 bg-body-tertiary rounded">
-            <a class="navbar-brand text-dark" href="index.html"><i class="bi bi-house-door"></i> La Plateforme_</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-          
-    </nav>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav class="d-flex flex-column flex-shrink-0 p-3 bg-primary vh-100" style="width: 250px;">
+            <a href="index.html" class="text-white text-decoration-none fs-5 mb-4">
+                <i class="bi bi-house-door"></i> La Plateforme_
+            </a>
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white active"><i class="bi bi-people"></i> Utilisateurs</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white"><i class="bi bi-calendar-check"></i> Demandes</a>
+                </li>
+            </ul>
+        </nav>
 
+        <!-- Contenu principal -->
+        <div class="container-fluid p-4">
+            <h2><i class="bi bi-gear-fill"></i> Gestion des Utilisateurs</h2>
+            <p class="text-muted">Gérez les demandes de rendez-vous et les rôles des utilisateurs.</p>
 
-    <div class="container mt-5">
-        <h2 class="text-center"><i class="bi bi-gear-fill"></i> Gestion des Utilisateurs</h2>
-        <p class="text-center text-muted">Vous pouvez gérer les demandes de rendez-vous des utilisateurs et aussi les promouvoir ou rétrograder .</p>
+            <table class="table table-dark table-striped">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Email</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Rôle</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableUsers"></tbody>
+            </table>
 
-        <table class="table table-striped mt-4">
-            <thead class="table-primary">
-                <tr>
-                    <th>Email</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>Rôle</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="tableUsers"></tbody>
-        </table>
-       
-        
+            <h2 class="mt-5"><i class="bi bi-calendar-check"></i> Gestion des demandes</h2>
+
+            <table class="table table-dark table-striped mt-3">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th>Date</th>
+                        <th>Statut</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableDemandesAdmin"></tbody>
+            </table>
+        </div>
     </div>
-    <h2 class="text-center mt-5"><i class="bi bi-calendar-check"></i> Gestion des demandes</h2>
 
-    <table class="table table-striped mt-4">
-        <thead class="table-primary">
-            <tr>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Date</th>
-                <th>Statut</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody id="tableDemandesAdmin"></tbody>
-    </table>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/admin.js"></script>
-    
-  
 
 </body>
 </html>
